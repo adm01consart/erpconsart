@@ -1,0 +1,26 @@
+git init  # Inicializa o repositório Git no diretório atual
+erp-cloud/
+├── backend/
+├── frontend/
+├── database/
+├── docker-compose.yml
+mkdir backend frontend database
+notepad docker-compose.yml  # Abre o arquivo no Notepad (ou qualquer editor de sua preferência)
+version: '3.8'
+services:
+  db:
+    image: postgres
+    container_name: erp_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: erpuser
+      POSTGRES_PASSWORD: erppass
+      POSTGRES_DB: erpdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+
